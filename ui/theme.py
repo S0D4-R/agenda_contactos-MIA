@@ -37,14 +37,14 @@ WARNING      = "#FFB400"
 WHITE        = "#FFFFFF"
 
 # ── Tipografía ────────────────────────────────────────────────────────────────
-FONT_MONO_SM  = ("Courier", 9)
-FONT_MONO     = ("Courier", 10)
-FONT_MONO_MD  = ("Courier", 11)
-FONT_MONO_LG  = ("Courier", 13, "bold")
-FONT_MONO_XL  = ("Courier", 16, "bold")
-FONT_MONO_XXL = ("Courier", 22, "bold")
-FONT_LABEL    = ("Courier", 9)
-FONT_TITLE    = ("Courier", 18, "bold")
+FONT_MONO_SM  = ("Courier", 11)
+FONT_MONO     = ("Courier", 12)
+FONT_MONO_MD  = ("Courier", 13)
+FONT_MONO_LG  = ("Courier", 15, "bold")
+FONT_MONO_XL  = ("Courier", 19, "bold")
+FONT_MONO_XXL = ("Courier", 26, "bold")
+FONT_LABEL    = ("Courier", 11)
+FONT_TITLE    = ("Courier", 21, "bold")
 
 # ── Geometría ─────────────────────────────────────────────────────────────────
 PAD_XS = 4
