@@ -1,12 +1,3 @@
-"""
-ui/ventana_herramientas.py
-==========================
-Ventana de herramientas:
-  - Verificar integridad SHA-256
-  - Crear respaldo ZIP
-  - Información del archivo
-"""
-
 import tkinter as tk
 from tkinter import messagebox
 

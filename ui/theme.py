@@ -1,25 +1,3 @@
-"""
-ui/theme.py
-===========
-Sistema de tokens de diseño cyberpunk para Tkinter.
-
-Paleta:
-  BG_DEEP    #050510   fondo base, casi negro-azul
-  BG_PANEL   #0D0D1A   paneles secundarios
-  BG_CARD    #12122A   tarjetas / entradas
-  NEON_CYAN  #00FFB4   acento primario (verde-cyan)
-  NEON_MAGENTA #C000FF acento secundario (violeta neón)
-  NEON_PINK  #FF00AA   hover / énfasis puntual
-  TEXT_MAIN  #E0E0F0   texto principal
-  TEXT_DIM   #6E6E9A   texto apagado / placeholder
-  BORDER     #1A1A3A   borde sutil
-  BORDER_NEON #00FFB4  borde activo
-  DANGER     #FF3C5A   error / alerta
-  SUCCESS    #00FFB4   confirmación
-
-Tipografía: Courier (monospace del sistema, disponible en todos los SO)
-"""
-
 # ── Paleta ────────────────────────────────────────────────────────────────────
 BG_DEEP      = "#050510"
 BG_PANEL     = "#0D0D1A"

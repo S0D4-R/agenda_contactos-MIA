@@ -1,9 +1,3 @@
-"""
-ui/widgets.py
-=============
-Componentes Tkinter reutilizables con estilo cyberpunk.
-"""
-
 import tkinter as tk
 from tkinter import ttk
 from typing import Callable, Optional

@@ -1,9 +1,3 @@
-"""
-ui/ventana_exportar.py
-======================
-Ventana de exportación: JSON y reporte PDF.
-"""
-
 import tkinter as tk
 from tkinter import messagebox
 from pathlib import Path

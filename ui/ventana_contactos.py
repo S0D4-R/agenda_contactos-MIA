@@ -1,13 +1,3 @@
-"""
-ui/ventana_contactos.py
-=======================
-Ventana principal de gestión de contactos:
-  - Agregar contacto
-  - Buscar por ID
-  - Modificar contacto existente
-  - Listar todos los contactos
-"""
-
 import tkinter as tk
 from tkinter import messagebox
 from typing import Callable

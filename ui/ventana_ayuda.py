@@ -1,9 +1,3 @@
-"""
-ui/ventana_ayuda.py
-===================
-Ventana de ayuda simulada con diseño cyberpunk.
-"""
-
 import tkinter as tk
 from ui import theme
 from ui.widgets import CyberpunkButton, SectionTitle
@@ -69,9 +63,6 @@ MÓDULOS UTILIZADOS
   fpdf2     → Generación de reportes PDF
   tkinter   → Interfaz gráfica
 
-═══════════════════════════════════════════════════════════
-  Universidad Rafael Landívar — Ingeniería en Informática
-  Laboratorio No. 2 — Manejo de Archivos — Octubre 2026
 ═══════════════════════════════════════════════════════════
 """
 
