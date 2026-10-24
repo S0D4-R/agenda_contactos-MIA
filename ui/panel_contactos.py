@@ -1,9 +1,3 @@
-"""
-ui/panel_contactos.py
-=====================
-Panel embebido de gestión de contactos (tab interno).
-"""
-
 import tkinter as tk
 from tkinter import messagebox
 from typing import Callable

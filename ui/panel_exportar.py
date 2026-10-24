@@ -1,9 +1,3 @@
-"""
-ui/panel_exportar.py
-====================
-Panel embebido de exportación (tab interno).
-"""
-
 import tkinter as tk
 from pathlib import Path
 from datetime import datetime

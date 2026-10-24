@@ -1,9 +1,3 @@
-"""
-ui/panel_ayuda.py
-=================
-Panel embebido de ayuda (tab interno).
-"""
-
 import tkinter as tk
 from ui import theme
 from ui.widgets import SectionTitle
@@ -70,9 +64,6 @@ MÓDULOS PYTHON UTILIZADOS
   fpdf2     → generación de PDF
   tkinter   → interfaz gráfica
 
-═══════════════════════════════════════════════════════════
-  Universidad Rafael Landívar — Ingeniería en Informática
-  Laboratorio No. 2 — Manejo de Archivos — Octubre 2026
 ═══════════════════════════════════════════════════════════
 """
 

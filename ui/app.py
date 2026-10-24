@@ -1,10 +1,3 @@
-"""
-ui/app.py
-=========
-Ventana principal — layout de tabs interno (sin ventanas secundarias).
-Sidebar de navegación + área de contenido que cambia según el tab activo.
-"""
-
 import tkinter as tk
 from tkinter import messagebox
 
@@ -14,12 +7,6 @@ from ui.widgets import CyberpunkButton, StatusBar
 
 
 class App(tk.Tk):
-    """
-    Ventana raíz con navegación lateral y contenido en tabs.
-    Cada sección (Contactos, Exportar, Herramientas, Ayuda, Dashboard)
-    se renderiza dentro del mismo panel derecho sin abrir ventanas nuevas.
-    """
-
     def __init__(self) -> None:
         super().__init__()
         self.manager = ArchivoManager()

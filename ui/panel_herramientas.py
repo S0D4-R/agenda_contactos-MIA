@@ -1,9 +1,3 @@
-"""
-ui/panel_herramientas.py
-========================
-Panel embebido de herramientas (tab interno).
-"""
-
 import tkinter as tk
 from tkinter import messagebox
 from datetime import datetime
