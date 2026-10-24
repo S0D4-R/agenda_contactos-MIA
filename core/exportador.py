@@ -1,9 +1,3 @@
-"""
-core/exportador.py
-==================
-Exportación de contactos a JSON y PDF (fpdf2).
-"""
-
 import json
 from datetime import datetime
 from pathlib import Path
@@ -21,12 +15,7 @@ EXPORT_DIR = Path("exports")
 class Exportador:
     """
     Genera archivos de exportación a partir de la lista de contactos.
-
-    Métodos públicos:
-    - exportar_json(contactos) → Path
-    - exportar_pdf(contactos)  → Path
     """
-
     def __init__(self, export_dir: Path = EXPORT_DIR) -> None:
         self.export_dir = Path(export_dir)
         self.export_dir.mkdir(parents=True, exist_ok=True)
@@ -36,9 +25,6 @@ class Exportador:
     def exportar_json(self, contactos: list["Contacto"]) -> Path:
         """
         Exporta todos los contactos a un archivo JSON.
-
-        Returns:
-            Ruta del archivo generado.
         """
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         ruta = self.export_dir / f"contactos_{timestamp}.json"
@@ -59,9 +45,6 @@ class Exportador:
     def exportar_pdf(self, contactos: list["Contacto"]) -> Path:
         """
         Genera un reporte PDF con estética cyberpunk oscura.
-
-        Returns:
-            Ruta del archivo generado.
         """
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         ruta = self.export_dir / f"reporte_{timestamp}.pdf"

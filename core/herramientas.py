@@ -1,9 +1,3 @@
-"""
-core/herramientas.py
-====================
-Herramientas auxiliares: respaldo ZIP y estadísticas de archivo.
-"""
-
 import zipfile
 from datetime import datetime
 from pathlib import Path
@@ -19,10 +13,6 @@ BACKUP_DIR = Path("backups")
 class Herramientas:
     """
     Provee operaciones auxiliares sobre los archivos de la agenda.
-
-    Métodos públicos:
-    - crear_respaldo(manager)     → dict con rutas y tamaños
-    - obtener_info_archivo(manager) → dict con metadatos
     """
 
     def __init__(self, backup_dir: Path = BACKUP_DIR) -> None:
@@ -34,14 +24,6 @@ class Herramientas:
     def crear_respaldo(self, manager: "ArchivoManager") -> dict:
         """
         Crea un ZIP con contactos.dat + indice.json.
-
-        Returns:
-            {
-                'ruta_zip':        Path,
-                'tamaño_original': int (bytes),
-                'tamaño_zip':      int (bytes),
-                'ratio':           float (%)
-            }
         """
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         zip_path  = self.backup_dir / f"respaldo_{timestamp}.zip"

@@ -1,27 +1,3 @@
-"""
-core/contacto.py
-================
-Modelo de datos para un Contacto.
-
-Estructura del registro (tamaño fijo = 111 BYTES):
-┌─────────┬────────┬────────────────────────────────────────────────────────┐
-│ Campo   │ Bytes  │ Descripción                                            │
-├─────────┼────────┼────────────────────────────────────────────────────────┤
-│ id      │  5     │ ASCII, número entero único, rjust(5) con spaces       │
-│ nombre  │ 30     │ ASCII-safe, ljust en bytes hasta 30                    │
-│ telefono│ 15     │ ASCII-safe, ljust en bytes hasta 15                    │
-│ correo  │ 40     │ ASCII-safe, ljust en bytes hasta 40                    │
-│ ciudad  │ 20     │ ASCII-safe, ljust en bytes hasta 20                    │
-│ newline │  1     │ b'\\n' separador de registros                           │
-├─────────┼────────┼────────────────────────────────────────────────────────┤
-│ TOTAL   │ 111    │ bytes por registro                                     │
-└─────────┴────────┴────────────────────────────────────────────────────────┘
-
-Nota: Los campos se almacenan en UTF-8 pero se truncan/rellenan a nivel
-de BYTES para garantizar RECORD_SIZE exacto. Caracteres multibyte (ej.
-acentos en UTF-8) se descomponen si el campo supera su límite en bytes.
-"""
-
 from dataclasses import dataclass
 
 
@@ -37,11 +13,6 @@ RECORD_SIZE: int = sum(FIELD_SIZES.values()) + 1   # +1 por b'\n' = 111
 
 
 def _encode_field(value: str, size: int) -> bytes:
-    """
-    Codifica un campo de texto en exactamente `size` bytes UTF-8.
-    - Trunca caracteres hasta que quepan en `size` bytes.
-    - Rellena con espacios ASCII hasta completar `size` bytes.
-    """
     encoded = value.encode("utf-8")
     # Truncar a nivel de bytes (respetando límite multibyte)
     if len(encoded) > size:
@@ -64,8 +35,6 @@ def _decode_field(data: bytes) -> str:
 
 @dataclass
 class Contacto:
-    """Entidad que representa un contacto en la agenda."""
-
     id:       int
     nombre:   str
     telefono: str
@@ -75,11 +44,6 @@ class Contacto:
     # ── Serialización ─────────────────────────────────────────────────────────
 
     def to_record(self) -> bytes:
-        """
-        Serializa el contacto en exactamente RECORD_SIZE bytes.
-        Usa _encode_field() que opera a nivel de bytes para garantizar
-        el tamaño fijo independientemente de caracteres multibyte UTF-8.
-        """
         record = (
             _encode_field(str(self.id).rjust(FIELD_SIZES["id"]), FIELD_SIZES["id"])
             + _encode_field(self.nombre,   FIELD_SIZES["nombre"])
@@ -96,11 +60,6 @@ class Contacto:
 
     @classmethod
     def from_record(cls, data: bytes) -> "Contacto":
-        """
-        Deserializa RECORD_SIZE bytes en un Contacto.
-        Opera a nivel de bytes para respetar el tamaño fijo.
-        Lanza ValueError si el tamaño no coincide.
-        """
         if len(data) != RECORD_SIZE:
             raise ValueError(
                 f"Tamaño de registro inválido: esperado {RECORD_SIZE}, "

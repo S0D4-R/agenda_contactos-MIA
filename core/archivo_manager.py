@@ -1,12 +1,3 @@
-"""
-core/archivo_manager.py
-=======================
-Manejo de archivos de registros de tamaño fijo.
-
-Implementa acceso aleatorio con seek() y tell(), índice primario en JSON
-y verificación de integridad con SHA-256.
-"""
-
 import hashlib
 import json
 import os
@@ -24,16 +15,6 @@ HASH_FILE    = DATA_DIR / "contactos.sha256"
 
 
 class ArchivoManager:
-    """
-    Gestiona el archivo de registros de tamaño fijo.
-
-    Responsabilidades:
-    - Agregar contactos al final del archivo.
-    - Leer / modificar un registro directamente por número de posición (seek).
-    - Mantener sincronizado el índice id→número_de_registro.
-    - Calcular y verificar el hash SHA-256 del archivo de datos.
-    """
-
     def __init__(
         self,
         dat_path:   Path = DAT_FILE,

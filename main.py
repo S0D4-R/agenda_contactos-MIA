@@ -1,15 +1,3 @@
-"""
-main.py
-=======
-Punto de entrada de la Agenda de Contactos con Acceso Aleatorio.
-
-Uso:
-    python main.py
-
-Requisitos:
-    pip install fpdf2
-"""
-
 import sys
 import os
 
