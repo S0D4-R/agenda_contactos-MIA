@@ -1,0 +1,13 @@
+{
+  "generado_en": "2026-10-20T13:14:05.645398",
+  "total": 1,
+  "contactos": [
+    {
+      "id": 1,
+      "nombre": "Papyrus",
+      "telefono": "3445656578",
+      "correo": "papyrusmail@papyrus.net",
+      "ciudad": "papytis"
+    }
+  ]
+}
