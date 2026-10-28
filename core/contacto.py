@@ -1,55 +1,48 @@
 from dataclasses import dataclass
 
 
-# ── Constantes de estructura ──────────────────────────────────────────────────
 FIELD_SIZES: dict[str, int] = {
-    "id":       5,
-    "nombre":   30,
+    "id": 5,
+    "nombre": 30,
     "telefono": 15,
-    "correo":   40,
-    "ciudad":   20,
+    "correo": 40,
+    "ciudad": 20,
 }
-RECORD_SIZE: int = sum(FIELD_SIZES.values()) + 1   # +1 por b'\n' = 111
+RECORD_SIZE: int = sum(FIELD_SIZES.values()) + 1
 
 
 def _encode_field(value: str, size: int) -> bytes:
     encoded = value.encode("utf-8")
-    # Truncar a nivel de bytes (respetando límite multibyte)
     if len(encoded) > size:
         encoded = encoded[:size]
-        # Evitar cortar en medio de un carácter multibyte
         while len(encoded) > 0:
             try:
                 encoded.decode("utf-8")
                 break
             except UnicodeDecodeError:
                 encoded = encoded[:-1]
-    # Rellenar con espacios hasta `size`
     return encoded + b" " * (size - len(encoded))
 
 
 def _decode_field(data: bytes) -> str:
-    """Decodifica bytes de campo y elimina el relleno de espacios."""
     return data.decode("utf-8", errors="replace").rstrip()
 
 
 @dataclass
 class Contacto:
-    id:       int
-    nombre:   str
+    id: int
+    nombre: str
     telefono: str
-    correo:   str
-    ciudad:   str
-
-    # ── Serialización ─────────────────────────────────────────────────────────
+    correo: str
+    ciudad: str
 
     def to_record(self) -> bytes:
         record = (
             _encode_field(str(self.id).rjust(FIELD_SIZES["id"]), FIELD_SIZES["id"])
-            + _encode_field(self.nombre,   FIELD_SIZES["nombre"])
+            + _encode_field(self.nombre, FIELD_SIZES["nombre"])
             + _encode_field(self.telefono, FIELD_SIZES["telefono"])
-            + _encode_field(self.correo,   FIELD_SIZES["correo"])
-            + _encode_field(self.ciudad,   FIELD_SIZES["ciudad"])
+            + _encode_field(self.correo, FIELD_SIZES["correo"])
+            + _encode_field(self.ciudad, FIELD_SIZES["ciudad"])
             + b"\n"
         )
         assert len(record) == RECORD_SIZE, (
@@ -73,22 +66,21 @@ class Contacto:
             pos += size
             return chunk
 
-        id_val   = int(_read(FIELD_SIZES["id"]) or "0")
-        nombre   = _read(FIELD_SIZES["nombre"])
+        id_val = int(_read(FIELD_SIZES["id"]) or "0")
+        nombre = _read(FIELD_SIZES["nombre"])
         telefono = _read(FIELD_SIZES["telefono"])
-        correo   = _read(FIELD_SIZES["correo"])
-        ciudad   = _read(FIELD_SIZES["ciudad"])
+        correo = _read(FIELD_SIZES["correo"])
+        ciudad = _read(FIELD_SIZES["ciudad"])
         return cls(id=id_val, nombre=nombre, telefono=telefono,
                    correo=correo, ciudad=ciudad)
 
     def to_dict(self) -> dict:
-        """Devuelve el contacto como diccionario (útil para JSON)."""
         return {
-            "id":       self.id,
-            "nombre":   self.nombre,
+            "id": self.id,
+            "nombre": self.nombre,
             "telefono": self.telefono,
-            "correo":   self.correo,
-            "ciudad":   self.ciudad,
+            "correo": self.correo,
+            "ciudad": self.ciudad,
         }
 
     def __str__(self) -> str:

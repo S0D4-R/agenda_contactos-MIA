@@ -11,22 +11,13 @@ BACKUP_DIR = Path("backups")
 
 
 class Herramientas:
-    """
-    Provee operaciones auxiliares sobre los archivos de la agenda.
-    """
-
     def __init__(self, backup_dir: Path = BACKUP_DIR) -> None:
         self.backup_dir = Path(backup_dir)
         self.backup_dir.mkdir(parents=True, exist_ok=True)
 
-    # ── Respaldo ──────────────────────────────────────────────────────────────
-
     def crear_respaldo(self, manager: "ArchivoManager") -> dict:
-        """
-        Crea un ZIP con contactos.dat + indice.json.
-        """
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        zip_path  = self.backup_dir / f"respaldo_{timestamp}.zip"
+        zip_path = self.backup_dir / f"respaldo_{timestamp}.zip"
 
         archivos = [manager.dat_path, manager.index_path]
         tamaño_original = sum(
@@ -47,17 +38,11 @@ class Herramientas:
         )
 
         return {
-            "ruta_zip":        zip_path,
+            "ruta_zip": zip_path,
             "tamaño_original": tamaño_original,
-            "tamaño_zip":      tamaño_zip,
-            "ratio":           round(ratio, 2),
+            "tamaño_zip": tamaño_zip,
+            "ratio": round(ratio, 2),
         }
 
-    # ── Info de archivo ───────────────────────────────────────────────────────
-
     def obtener_info_archivo(self, manager: "ArchivoManager") -> dict:
-        """
-        Devuelve metadatos enriquecidos del archivo de datos.
-        Incluye permisos (os.access) y fecha de modificación (os.stat).
-        """
         return manager.info_archivo()
